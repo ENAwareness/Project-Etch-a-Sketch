@@ -1,0 +1,14 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.grid-square {
+  border: 1px solid black;
+  height: 60px;
+  width: 60px;
+  box-sizing: border-box;
+}
+
