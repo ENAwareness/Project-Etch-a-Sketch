@@ -10,6 +10,13 @@ btnChangeGrid.addEventListener("click", function () {
   }
 });
 
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
+
 function createGrid(size) {
   container.innerHTML = "";
 
@@ -17,11 +24,21 @@ function createGrid(size) {
     const square = document.createElement("div");
     square.classList.add("grid-square");
 
-    square.style.width = `${960/size}px`;
-    square.style.height = `${960/size}px`;
+    square.style.width = `${960 / size}px`;
+    square.style.height = `${960 / size}px`;
 
     square.addEventListener("mouseenter", function (e) {
-      e.target.classList.add("hover");
+      let interactions = e.target.dataset.interactions || 0;
+      interactions = Number(interactions);
+
+      const brightness = 100 - interactions * 10;
+
+      e.target.style.backgroundColor = getRandomColor();
+      e.target.style.filter = `brightness(${brightness}%)`;
+
+      if (interactions < 10) {
+        e.target.dataset.interactions = interactions + 1;
+      }
     });
 
     container.appendChild(square);

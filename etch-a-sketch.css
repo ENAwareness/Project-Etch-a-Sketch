@@ -8,9 +8,7 @@
 .grid-square {
   border: 1px solid black;
   box-sizing: border-box;
+  transition: filter 0.3s;
 }
 
-.hover {
-    background-color: grey
-}
 
